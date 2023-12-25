@@ -1,0 +1,207 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.allbox {
+    height: 56.26vw;
+    width: 100%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    margin: 0;
+    padding: 0;
+    background-image: url(/src/views/Register_login/book.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+body {
+    /* background: url(../绘蓝杯1/插画集/10.png) center center no-repeat;
+            background-size: contain; */
+    background-color: #d7daca;
+    height: 98vw;
+    width: 100vw;
+}
+
+.imgbox {
+    overflow: hidden;
+    height: 100%;
+    /* width: 1280px; */
+}
+
+.background {
+    width: 100vw;
+    transform: scale(1.06);
+    height: 56vw;
+    top: 0;
+    left: 0;
+    z-index: -6;
+}
+
+.main {
+    background: #15152a11;
+    width: 379px;
+    position: absolute;
+    left: 50%;
+    top: 47.5%;
+    transform: translate(-50%, -50%) scale(1.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0px 0px 5px 5px rgb(0 0 0 / 39%);
+    border-radius: 11px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.short,
+.tall {
+    transition: all .3s;
+}
+
+.short {
+    height: 400px;
+}
+
+.tall {
+    height: 490px;
+}
+
+.new-box,
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+}
+
+.left,
+.mid {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .4s;
+}
+
+.left {
+    left: -400px;
+}
+
+.mid {
+    left: 50%;
+}
+
+ul {
+    margin-top: 105px;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    padding-top: 11px;
+}
+
+li input {
+    font-size: 20px;
+    border: none;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+}
+
+li input::placeholder {
+    color: rgb(67, 67, 67);
+}
+
+li button {
+    font-size: 20px;
+    padding: 5px;
+    background-color: transparent;
+    color: black;
+    border: 0;
+}
+
+.title {
+    font-weight: 900;
+    color: white;
+    margin: 0 100px -60px;
+    font-size: 53px;
+}
+
+ul span {
+    margin-right: 8px;
+    color: wheat;
+}
+
+.btn,
+.btn-new {
+    position: relative;
+}
+
+.btn::after,
+.btn-new::after {
+    position: absolute;
+    content: '';
+    bottom: -1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    background-color: rgb(255, 122, 58);
+    height: 2px;
+    width: 7px;
+    color: white;
+    transition: all .2s;
+}
+
+.btn:hover::after,
+.btn-new:hover::after {
+    width: 85px;
+}
+
+.change-new,
+.change-login {
+    color: #fd532b;
+    font-size: 13px;
+}
+
+.change-new:hover,
+.change-login:hover {
+    cursor: pointer;
+}
+
+.wrong,
+.right {
+    font-size: 15px;
+    width: 375px;
+}
+
+.wrong {
+    color: hotpink;
+}
+
+.right {
+    color: #00c700;
+}
+
+#Email::-webkit-input-placeholder {
+    color: rgb(183, 176, 176);
+}
+
+button {
+    cursor: pointer;
+}
+
+.word-left {
+    left: 30px;
+}
+
+.word-right {
+    right: 30px;
+}

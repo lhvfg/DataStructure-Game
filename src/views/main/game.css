@@ -1,0 +1,190 @@
+.mask {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    margin-top: -75px;
+}
+
+.ambigous {
+    z-index: 4;
+    background-color: rgba(242, 234, 224, 0.948);
+}
+
+.transparent {
+    z-index: 0;
+    background-color: rgba(242, 234, 224, 0);
+}
+
+.title {
+    z-index: 6;
+    position: fixed;
+    top: 5vh;
+    right: 87vw;
+    transform: rotate(270deg);
+    font-size: 30px;
+    white-space: nowrap;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    writing-mode: tb-rl;
+    background-image: linear-gradient( to top, rgb(248, 108, 126), rgb(166, 87, 219), rgb(70, 153, 236), rgb(70, 240, 138), rgb(212, 229, 58), rgb(236, 89, 52), rgb(240, 68, 68), rgb(240, 68, 68), rgb(236, 89, 52), rgb(212, 229, 58), rgb(70, 240, 138), rgb(70, 153, 236), rgb(166, 87, 219), rgb(248, 108, 126), rgb(248, 108, 126), rgb(166, 87, 219), rgb(70, 153, 236), rgb(70, 240, 138), rgb(212, 229, 58), rgb(236, 89, 52), rgb(240, 68, 68), rgb(240, 68, 68), rgb(236, 89, 52), rgb(212, 229, 58), rgb(70, 240, 138), rgb(70, 153, 236), rgb(166, 87, 219), rgb(248, 108, 126));
+    background-size: 400% 400%;
+    animation: ani 6s linear infinite;
+    overflow: hidden;
+    cursor: default;
+}
+
+@keyframes ani {
+    0% {
+        background-position: 0% 0%;
+        transform: rotate(280deg);
+    }
+    50% {
+        transform: rotate(260deg);
+    }
+    100% {
+        background-position: 69% 69%;
+        transform: rotate(280deg);
+    }
+}
+
+.board {
+    margin: 60px auto;
+}
+
+.line {
+    display: flex;
+}
+
+.ceil {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftBorder,
+.rightBorder,
+.topBorder,
+.bottomBorder,
+.middle {
+    border: 1px solid black;
+    margin: -1px;
+}
+
+.leftBorder {
+    border-left: 3px solid black;
+}
+
+.rightBorder {
+    border-right: 3px solid black;
+    margin-right: 0;
+}
+
+.topBorder {
+    border-top: 3px solid black;
+}
+
+.bottomBorder {
+    border-bottom: 3px solid black;
+    margin-bottom: 0;
+}
+
+.ceil:hover .number1 {
+    font-weight: 600;
+}
+
+.yellow {
+    background-color: rgb(255, 241, 179);
+}
+
+.brown {
+    color: rgb(155, 109, 94);
+}
+
+.brownBack {
+    background-color: rgb(221, 203, 177);
+}
+
+.number1 {
+    margin: auto;
+    font-size: 45px;
+    font-weight: 300;
+    font-family: cursive;
+    cursor: default;
+}
+
+.numpad {
+    position: absolute;
+    left: -14px;
+    top: -14px;
+    z-index: 1;
+    display: flex;
+    background-color: rgb(221, 203, 177);
+    border-radius: 7px;
+    overflow: hidden;
+    transition: all 0.1s;
+}
+
+.showNumpad {
+    transform: scale(1.2);
+    visibility: visible;
+    transition: all 0.1s ease-out;
+}
+
+.hideNumpad {
+    transition: all 0.1s ease-in;
+    transform: scale(0);
+}
+
+.smallceil {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(221, 203, 177);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(255, 255, 255);
+    margin: -1px;
+}
+
+.smallceil:hover {
+    background-color: rgb(221, 203, 177);
+}
+
+.number2 {
+    display: inline-block;
+    height: 97%;
+    width: 97%;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: cursive;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(155, 109, 95);
+}
+
+.number2:hover {
+    background-color: white;
+    border: 1px solid rgb(221, 203, 177);
+    margin: -1px;
+}
+
+.redCircle {
+    position: absolute;
+    height: 86%;
+    width: 86%;
+    border-radius: 50%;
+    border: 2.4px solid rgb(197, 16, 21);
+}
+
+.history {
+    position: absolute;
+    right: 178px;
+    top: 143px;
+    display: flex;
+    flex-direction: column;
+}

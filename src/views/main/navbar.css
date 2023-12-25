@@ -1,0 +1,211 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    position: absolute;
+    /* right: 15%; */
+    z-index: 2;
+}
+
+.arrow:hover {
+    background-color: white;
+}
+
+.navbar {
+    padding: 7px;
+    background-color: #DDCBB1;
+    position: relative;
+    transition: transform 0.3s ease;
+    user-select: none;
+    transition: transform 0.3s ease;
+    /* 添加过渡效果 */
+    /*border:  2px solid #9B6D5F; */
+}
+
+.navibar .horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar.vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 调整垂直布局的对齐方式为从左到右 */
+}
+
+.navbar i {
+    font-size: 24px;
+    cursor: pointer;
+    color: #9B6D5F;
+    padding: 8px;
+    /* border-right: 2px solid #9B6D5F;  */
+}
+
+.navbar i:hover {
+    background-color: white;
+}
+
+.navbar i .vertical {
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+#arrowIcon {
+    color: white;
+}
+
+.navbar.draggable {
+    cursor: move;
+}
+
+
+/* 弹窗 */
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    background-color: #F2EAE0;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.header {
+    background-color: #9B6D5F;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeBtn {
+    font-size: 25px;
+    cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.Pbottom {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+#time {
+    color: #373535;
+    font-size: 28px;
+    text-align: center;
+}
+
+#stopBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* 按钮颜色改变 */
+
+button {
+    background-color: #9B6D5F;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: #FFFFFF;
+    color: #9B6D5F;
+}
+
+
+/* 重启弹窗 */
+
+.custom-popup {
+    z-index: 5;
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    background-color: #F2EAE0;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-header {
+    background-color: #9B6D5F;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeBtn {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.custom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.top i {
+    font-size: 18px;
+    color: #9B6D5F;
+    padding: 13px;
+}
+
+.warn {
+    color: #9B6D5F;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+/* .message {
+    padding: 8px;
+} */
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 15px;
+    margin-top: 10px;
+}
+
+.button {
+    background-color: #9B6D5F;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: #9B6D5F;
+}
