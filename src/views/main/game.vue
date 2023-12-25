@@ -518,7 +518,7 @@ function reset(){
             </div>
         </div>
     </div>
-    <div style=" height: 100%; width: 100%; display: flex;">
+    <div style=" height: 716px;; width: 100%; display: flex;">
         <div class="container">
             <!-- Navbar -->
             <div :class="['navbar', { vertical: isVertical, horizontal: !isVertical }]"

@@ -123,7 +123,6 @@ function handleLogin() {
                     // 本地、pinia存储用户名等用户信息
                     localStorage.setItem("userName", _username);
                     localStorage.setItem("succeedNum", res.data.succeedNum);
-                    localStorage.setItem("userId", res.data.userId);
                     //清空内容
                     clearForm();
                     setTimeout(() => {
