@@ -3,9 +3,10 @@ import { ref, reactive,onMounted } from 'vue';
 import axios from "axios";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
+import { useUserStore } from '../../store/store';
 
 const router = useRouter();
-
+const store = useUserStore();
 const showRegister = ref(false);
 const usernameNew = ref('');
 const passwordNew = ref('');
@@ -120,9 +121,14 @@ function handleLogin() {
             (res) => {
                 console.log(res);
                 if (res.data.status == "loginSucceed") {
-                    // 本地、pinia存储用户名等用户信息
+                    // pinia存储用户名等用户信息
                     localStorage.setItem("userName", _username);
                     localStorage.setItem("succeedNum", res.data.succeedNum);
+                    store.userId = res.data.userId;
+                    store.userName = res.data.userName;
+                    store.succeedNum = res.data.succeedNum;
+                    store.fastTime = res.data.fastTime;
+                    console.log(store);
                     //清空内容
                     clearForm();
                     setTimeout(() => {

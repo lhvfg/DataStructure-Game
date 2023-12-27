@@ -1,11 +1,15 @@
 <script setup>
 import { ref, reactive, computed } from 'vue'
+import { useUserStore } from '../../store/store';
+import { useRouter } from "vue-router";
 import axios from "axios";
+const router = useRouter();
 const Request = axios.create({
     baseURL: 'api',
     timeout: 3000,
     withCredentials: true,
 });
+const store = useUserStore();
 // 开始时间
 const startTime = ref(0);
 // 目前时间
@@ -271,11 +275,33 @@ function addNum(x, y, num) {
         if (judge()) {
             alert("挑战成功！");
             end.value = true;
-            succeedNum.value++;
-            localStorage.setItem("succeedNum", succeedNum.value);
+            let request = {
+                id: store.userId,
+                succeedNum: succeedNum.value + 1
+            };
+            Request.post("/changeSuccessNum", request).then(
+                (res) => {
+                    console.log(res);
+                    if (res.data.status == "changeNumSuccess") {
+                        succeedNum.value++;
+                    }
+                }
+            )
             if (fastTime.value == null || fastTime.value > (currentTime.value - startTime.value) / 1000) {
-                fastTime.value = (currentTime.value - startTime.value) / 1000; }
-                localStorage.setItem("fastTime", fastTime.value);
+                var newTime = (currentTime.value - startTime.value) / 1000;
+                request = {
+                    id: store.userId,
+                    fastTime: newTime
+                };
+                Request.post("/changeFastTime", request).then(
+                    (res) => {
+                        console.log(res);
+                        if (res.data.status == "changeTimeSuccess") {
+                            fastTime.value = newTime;
+                        }
+                    }
+                )
+            }
         }
     }
     handleHighlight(x, y, num);
@@ -323,11 +349,11 @@ function judge() {
     for (let i = 0; i < size.value; i++) {
         for (let j = 0; j < size.value; j++) {
             if (!isValid(i, j, sudoku.value[i][j])) {
-                console.log(i + "行" + j + "列的元素不可行");
+                //console.log(i + "行" + j + "列的元素不可行");
                 return false
             }
             else {
-                console.log(i + "行" + j + "列的元素可行");
+                //console.log(i + "行" + j + "列的元素可行");
             }
         }
     }
@@ -409,11 +435,12 @@ function start() {
         currentTime.value = Date.now();
     }, 1000);
     // 获取记录次数和记录时间
-    if (localStorage.getItem("succeedNum") != null) {
-        succeedNum.value = localStorage.getItem("succeedNum");
+    console.log(store.userId);
+    if (store.succeedNum != null) {
+        succeedNum.value = store.succeedNum;
     }
-    if (localStorage.getItem("fastTime") != null) {
-        fastTime.value = localStorage.getItem("fastTime");
+    if (store.fastTime != null) {
+        fastTime.value = store.fastTime;
     }
 };
 start();
@@ -442,12 +469,42 @@ const formattedTime = computed(() => {
 const formatNumber = (num) => num.toString().padStart(2, '0');
 
 // 重置次数与时间
-function reset(){
-    fastTime.value = null;
-    succeedNum.value = 0;
-    localStorage.clear();
+function reset() {
+    let request = {
+        id: store.userId,
+        succeedNum: 0
+    };
+    Request.post("/changeSuccessNum", request).then(
+        (res) => {
+            console.log(res);
+            if (res.data.status == "changeNumSuccess") {
+                succeedNum.value = 0;
+            }
+        }
+    )
+    request = {
+        id: store.userId,
+        fastTime: 0
+    };
+    Request.post("/changeFastTime", request).then(
+        (res) => {
+            console.log(res);
+            if (res.data.status == "changeTimeSuccess") {
+                fastTime.value = null;
+            }
+        }
+    )
 }
 
+//退出
+function signout(){
+    store.userId = null;
+    store.fastTime = null;
+    store.userName = null;
+    setTimeout(()=>{
+        router.push('/');
+    },500)
+}
 </script>
 <template>
     <head>
@@ -568,9 +625,11 @@ function reset(){
         </div>
     </div>
     <div class="history">
+        <span>用户：{{ store.userName }}</span>
         <span>胜利次数：{{ succeedNum }}</span>
         <div v-show="fastTime != null">最快用时：{{ fastTime }}s</div>
         <button @click="reset()" style="margin-top: 5px;">重置</button>
+        <button @click="signout()" style="margin-top: 5px;">退出</button>
     </div>
     <!-- <button @click="generate()">重新生成</button>
     <input v-model="N">
